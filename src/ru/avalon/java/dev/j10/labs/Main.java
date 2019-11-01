@@ -1,18 +1,16 @@
 package ru.avalon.java.dev.j10.labs;
-
+import ru.avalon.java.dev.j10.labs.models.Passport;
 import ru.avalon.java.dev.j10.labs.models.Person;
+import ru.avalon.java.dev.j10.labs.commons.Address;
+
 
 public class Main {
-
-    Main() {
-
-        /*
+      /*
          * FIXME(Студент): Измените определение метода так, чтобы он стал точкой входа в приложение.
          */
-
-        Person ivanov = null;
-        Person smith = null;
-
+    
+    public static void main(String[] args) {
+        
         /*
          * TODO(Студент): Создайте экземпляры класса 'Person'
          *
@@ -24,6 +22,32 @@ public class Main {
          *    чтобы она адресовала объект типа 'Person'
          *    описывающий человека по имени 'John Edvard Smith'.
          */
+  
+       Person ivanov = new Person();
+       Passport ivanovPassport = new Passport("Иван", "Иванов", "","Nub");
+       ivanov.setPassport(ivanovPassport);
+       Address ivanovAddress = new Address("Nevskiy", "88", "24");
+       ivanov.setAddress(ivanovAddress);
+      
+//--------------
+     Person john = new Person();
+     Passport johnPassport = new Passport("John", "Edward", "Smith");
+     john.setPassport(johnPassport);
+     Address johnAddress = new Address("Ligovskiy", "12", "24");
+     john.setAddress(johnAddress);
+     
+     //---------------
+    
+
+
+ 
+
+      
+
+      //Person ivanov = null;
+      
+
+
 
         /*
          * TODO(Студент): Создайте несколько строковых переменных:
@@ -44,6 +68,17 @@ public class Main {
          *    человека, описанного объектом, адресованным
          *    переменной 'smith'.
          */
+  //****************
+        String ivanovfullname = ivanov.getFullName();
+        String ivanovaddress = ivanov.getAddress();
+         String johnfullname = john.getFullName();
+        String johnaddress = john.getAddress();
+        
+        
+            
+      
+   
+        //*****************
 
         /*
          * TODO(Студент): Выведите в консоль значения созданных строковых переменных:
@@ -51,5 +86,11 @@ public class Main {
          * Значение каждой переменной должно быть выведено на
          * отдельной строке.
          */
-    }
+        System.out.println("person1: " + ivanovfullname);
+        System.out.println("address1: " + ivanovaddress);
+        System.out.println("person2: " + johnfullname);
+        System.out.println("address2: " + johnaddress);
+      
+
+}
 }
