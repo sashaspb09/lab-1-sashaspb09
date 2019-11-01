@@ -1,4 +1,7 @@
 package ru.avalon.java.dev.j10.labs.models;
+import ru.avalon.java.dev.j10.labs.commons.Address;
+
+
 
 /**
  * Представление о человеке.
@@ -6,17 +9,27 @@ package ru.avalon.java.dev.j10.labs.models;
  * С точки зрения задания человек представляется как сущность,
  * наделённая:
  * <ol>
- *     <li>именем;
- *     <li>паспортными данными;
- *     <li>пропиской по месту жительства.
+ *     <li>именем;+
+ *     <li>паспортными данными;+
+ *     <li>пропиской по месту жительства.+
  * </ol>
  */
 public class Person {
+    
 
+ 
+
+  private Passport passport;
+  private Address address;
+    
+
+   
+    
+    
     /*
-     * TODO(Студент): Создайте класс Address.
+     * TODO(Студент): Создайте класс Address.+
      *
-     * 1. Добавте файл в пакет ru.avalon.java.dev.j10.labs.commons.
+     * 1. Добавте файл в пакет ru.avalon.java.dev.j10.labs.commons.+
      *
      * 2. Создайте класс, видимый из пакета. Подумайте о том
      *    Какое имя должен иметь класс, если он объявленн в этом
@@ -44,14 +57,36 @@ public class Person {
      * есть только Имя и Фамилия, то возвращает их, разделённые
      * пробелом.
      *
+     * 
      * @return имя человека в виде строки.
      */
     public String getFullName() {
+        if (passport != null) {
+            if (!passport.getName().isEmpty() && !passport.getLastName().isEmpty()) {
+                if (passport.getMiddleName().isEmpty() && !passport.getSecondMiddleName().isEmpty()) {
+                    return passport.getName() + " " + passport.getSecondMiddleName().substring(0, 1) + ". " + passport.getLastName();
+                } else if (passport.getMiddleName().isEmpty() && passport.getSecondMiddleName().isEmpty()) {
+                    return passport.getName() + " " + passport.getLastName();
+                } else {
+                    return passport.getName() + " " + passport.getLastName()+ " " + passport.getMiddleName();
+                }
+            }
+            return null;
+        } else {
+            return null;
+        }
+    }
+        public String getPassportData() {
+            return passport.getBirthDate() + passport.getOrgan() +passport.getReleaseDate();
+            
+        }
+        
+        
         /*
          * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
          */
-        return null;
-    }
+        
+   
 
     /**
      * Возвращает адрес, по которому проживает человек.
@@ -65,6 +100,18 @@ public class Person {
         /*
          * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
          */
+         if (address != null) {
+            return address.toString();
+        }
         return null;
     }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
 }
